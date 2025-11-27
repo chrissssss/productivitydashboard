@@ -1,0 +1,30 @@
+{
+  "uid": "metrics-dashboard",
+  "title": "Python Metrics Dashboard",
+  "tags": [],
+  "timezone": "browser",
+  "schemaVersion": 16,
+  "version": 1,
+  "panels": [
+    {
+      "title": "Python Metrics",
+      "type": "timeseries",
+      "datasource": {
+        "type": "postgres",
+        "uid": "PostgreSQL"
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "postgres",
+            "uid": "PostgreSQL"
+          },
+          "rawSql": "SELECT\n  \"timestamp\" AS \"time\",\n  \"value\"\nFROM\n  metrics\nORDER BY\n  \"timestamp\" ASC",
+          "format": "time_series"
+        }
+      ],
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 0 }
+    }
+  ]
+}
