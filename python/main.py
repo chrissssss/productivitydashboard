@@ -43,8 +43,12 @@ def main():
                     "INSERT INTO metrics (value) VALUES (%s)",
                     (value,)
                 )
+                cur.execute(
+                    "INSERT INTO live_metrics (value) VALUES (%s)",
+                    (value,)
+                )
                 conn.commit()
-                print(f"Inserted new metric value: {value}")
+                print(f"Inserted new metric value into both tables: {value}")
                 time.sleep(5)
 
     except (Exception, psycopg2.DatabaseError) as error:
